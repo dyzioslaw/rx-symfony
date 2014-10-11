@@ -1,0 +1,22 @@
+Warsztaty\FilterBundle\Entity\AttributeValues:
+    type: entity
+    table: attribute_values
+    repositoryClass: Warsztaty\FilterBundle\Entity\AttributeValuesRepository
+    id:
+        idValue:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            column: id_value
+            generator:
+                strategy: IDENTITY
+    fields:
+        value:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

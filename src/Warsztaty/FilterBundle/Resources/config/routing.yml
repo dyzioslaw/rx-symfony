@@ -1,0 +1,7 @@
+warsztaty_filter_homepage:
+    path:     /
+    defaults: { _controller: WarsztatyFilterBundle:Default:index }
+
+warsztaty_filter_product_list:
+  path: /product_list
+  defaults: { _controller: WarsztatyFilterBundle:Default:list }

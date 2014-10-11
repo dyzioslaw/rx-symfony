@@ -1,0 +1,46 @@
+Warsztaty\FilterBundle\Entity\AttributeRelation:
+    type: entity
+    table: attribute_relation
+    repositoryClass: Warsztaty\FilterBundle\Entity\AttributeRelationRepository
+    indexes:
+        id_value:
+            columns:
+                - id_value
+        IDX_FE0BDDB97A4F53DC:
+            columns:
+                - id_attribute
+    uniqueConstraints:
+        uniq_relation_data:
+            columns:
+                - id_attribute
+                - id_value
+    id:
+        idRelation:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            column: id_relation
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idAttribute:
+            targetEntity: Attributes
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_attribute:
+                    referencedColumnName: id_attribute
+            orphanRemoval: false
+        idValue:
+            targetEntity: AttributeValues
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_value:
+                    referencedColumnName: id_value
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

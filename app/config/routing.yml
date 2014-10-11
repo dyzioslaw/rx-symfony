@@ -1,0 +1,4 @@
+warsztaty_filter:
+    resource: "@WarsztatyFilterBundle/Resources/config/routing.yml"
+    prefix:   /
+

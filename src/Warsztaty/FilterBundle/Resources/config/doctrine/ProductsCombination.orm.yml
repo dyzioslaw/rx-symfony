@@ -1,0 +1,46 @@
+Warsztaty\FilterBundle\Entity\ProductsCombination:
+    type: entity
+    table: products_combination
+    repositoryClass: Warsztaty\FilterBundle\Entity\ProductsCombinationRepository
+    indexes:
+        id_relation:
+            columns:
+                - id_relation
+        IDX_24D47834DD7ADDD:
+            columns:
+                - id_product
+    uniqueConstraints:
+        uniq_combination_data:
+            columns:
+                - id_product
+                - id_relation
+    id:
+        idCombination:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            column: id_combination
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idProduct:
+            targetEntity: Products
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_product:
+                    referencedColumnName: id_product
+            orphanRemoval: false
+        idRelation:
+            targetEntity: AttributeRelation
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_relation:
+                    referencedColumnName: id_relation
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

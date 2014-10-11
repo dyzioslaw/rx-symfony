@@ -1,0 +1,66 @@
+Warsztaty\FilterBundle\Entity\Products:
+    type: entity
+    table: products
+    repositoryClass: Warsztaty\FilterBundle\Entity\ProductsRepository
+    indexes:
+        fk_product_available:
+            columns:
+                - is_available
+    id:
+        idProduct:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            column: id_product
+            generator:
+                strategy: IDENTITY
+    fields:
+        isAvailable:
+            type: boolean
+            nullable: false
+            comment: ''
+            default: '0'
+            column: is_available
+        name:
+            type: string
+            nullable: false
+            length: 127
+            fixed: false
+            comment: 'Product name'
+        description:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: 'Product description'
+        exploitationCost:
+            type: string
+            nullable: false
+            length: 127
+            fixed: false
+            comment: ''
+            column: exploitation_cost
+        coverImagePath:
+            type: string
+            nullable: false
+            length: 127
+            fixed: false
+            comment: 'Product cover image path'
+            column: cover_image_path
+        galleryUri:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+            column: gallery_uri
+        movieUri:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+            column: movie_uri
+    lifecycleCallbacks: {  }

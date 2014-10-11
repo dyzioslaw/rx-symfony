@@ -1,0 +1,27 @@
+<?php
+
+namespace Warsztaty\FilterBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Products
+ */
+class Products
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

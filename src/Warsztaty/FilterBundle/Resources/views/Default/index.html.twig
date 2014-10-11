@@ -1,0 +1,78 @@
+{% extends 'WarsztatyFilterBundle::layout.html.twig' %}
+
+{% block title %}Nawilż swoje życie!{% endblock %}
+
+{% block content_header '' %}
+
+{% block content %}
+
+    <div class="container theme-showcase" role="main">
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <h1 class="title">Witaj w świecie nawilżaczy!</h1>
+
+            <p>Dzisiaj Twoje życie się odmieni! Nigdy więcej suchego powietrza, kurzu i alergii!</p>
+
+            <p>Wybierz właściwości jakich oczekujesz od nawilżacza i poznaj nowego przyjaciela Twojego domu!</p>
+
+        </div>
+        <div class="container">
+            <div class="row">
+
+                <!-- begin filter -->
+                <form class="filters" action="{{ path('warsztaty_filter_product_list') }}" method="get">
+                    <div class="col-md-2">
+                        <label for="surface">Powierzchnia </label>
+                        <select class="element select medium" id="surface" name="surface">
+                            <option value="" selected="selected">wybierz...</option>
+                            <option value="1">do 30m2</option>
+                            <option value="2">do 50m2</option>
+                            <option value="3">powyżej 50m2</option>
+                        </select>
+
+                        <label for="technology">Technologia </label>
+                        <select class="element select medium" id="technology" name="technology">
+                            <option value="" selected="selected">wybierz...</option>
+                            <option value="1">ultradźwiękowe</option>
+                            <option value="2">parowe</option>
+                            <option value="3">ewaporacyjne</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <label>Jonizacja</label>
+                        <input type="checkbox" name="jons" class="element checkbox medium" id="jons">
+
+                        <label>Aromaterapia</label>
+                        <input type="checkbox" name="aroma" class="element checkbox medium" id="aroma">
+
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <label>Ciepła mgiełka</label>
+                        <input type="checkbox" name="warmfog" class="element checkbox medium" id="warmfog">
+
+                        <label>Higrostat</label>
+                        <input type="checkbox" name="higro" class="element checkbox medium" id="higro">
+
+                    </div>
+                </form>
+                <!-- end filters -->
+                <div class="col-md-4 col-md-offset-2">
+                    <img id="loader" src="{{ asset('bundles/warsztaty/img/loading.gif') }}" style="margin:0 auto; vertical-align: middle; display: none" />
+                </div>
+            </div>
+            <div class="row results" id="results-container">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}
