@@ -29,7 +29,7 @@
                         </h1>
 
                         <p class="description">
-                            {{ product.description }}
+                            {{ product.description|raw }}
                         </p>
 
                         {% if product.isAvailable == true %}
