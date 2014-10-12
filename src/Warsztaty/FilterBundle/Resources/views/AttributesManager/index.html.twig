@@ -1,1 +1,53 @@
-test
+{% extends 'WarsztatyFilterBundle::layout.html.twig' %}
+
+{% block title %}Nawilż swoje życie!{% endblock %}
+
+{% block content_header '' %}
+
+    {% block content %}
+
+        <div class="container theme-showcase" role="main">
+
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron">
+                <h3>Lista atrybutów</h3>
+
+            </div>
+            <div class="container">
+                <div class="row product-details" id="product-container">
+                    <div class="col-md-12">
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Numer ID</th>
+                                <th>Nazwa atrybutu</th>
+                            </TR>
+
+                            </THEAD>
+        {% for item in list %}
+                            <tr>
+                                <td class="id">
+                    {{ item.getIdAttribute() }}
+                                </td>
+                                <td class="name">
+                                    {{ item.getName() }}
+                                </td>
+                                <td class="edit">
+                                    <a class="btn btn-default" target="_blank"
+                                       onclick="window.open('{{ path('warsztaty_filter_attributes_manager_edit',{'id': item.getIdAttribute}) }}',
+                                               'mywin','width=500,height=200');"  href="{{ path('warsztaty_filter_attributes_manager_edit',
+                                    {'id': item.getIdAttribute}) }}">EDYTUJ</a>
+                                </td>
+                            </tr>
+        {% endfor %}
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    {% endblock %}
