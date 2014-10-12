@@ -1,6 +1,6 @@
 
 
-
+{% if list|length > 0 %}
 {% for item in list %}
     <div class="product">
         <h2>{{ item.name }}</h2>
@@ -13,4 +13,5 @@
     </div>
 
 {% endfor %}
+{% endif %}
 {{ dump(list) }}
