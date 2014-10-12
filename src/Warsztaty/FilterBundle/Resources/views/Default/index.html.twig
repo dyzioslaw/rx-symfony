@@ -42,22 +42,37 @@
 
                     <div class="col-md-2">
 
-                        <label>{{ getAttributesList[getAttributeMap['jons']]['name'] }}</label>
-                        <input type="checkbox" name="jons[]" class="element checkbox medium" id="jons" value="{{ getAttributesList[getAttributeMap['jons']]['values'][0]['idValue'] }}">
+                        <label for="jons">{{ getAttributesList[getAttributeMap['jons']]['name'] }}</label>
+                        <select class="element select medium" name="jons[]" id="jons">
+                            {% for item in getAttributesList[getAttributeMap['jons']]['values'] %}
+                                <option value="{{ item.idValue }}">{{ item.value }}</option>
+                            {% endfor %}
+                        </select>
 
                         <label>{{ getAttributesList[getAttributeMap['artherapy']]['name'] }}</label>
-                        <input type="checkbox" name="aroma[]" class="element checkbox medium" id="aroma" value="{{ getAttributesList[getAttributeMap['artherapy']]['values'][0]['idValue'] }}">
-
+                        <select class="element select medium" name="artherapy[]" id="artherapy">
+                            {% for item in getAttributesList[getAttributeMap['artherapy']]['values'] %}
+                                <option value="{{ item.idValue }}">{{ item.value }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
 
                     <div class="col-md-2">
 
                         <label>{{ getAttributesList[getAttributeMap['warmfog']]['name'] }}</label>
-                        <input type="checkbox" name="warmfog[]" class="element checkbox medium" id="warmfog" value="{{ getAttributesList[getAttributeMap['warmfog']]['values'][0]['idValue'] }}">
+                        <select class="element select medium" name="warmfog[]" id="warmfog">
+                            {% for item in getAttributesList[getAttributeMap['warmfog']]['values'] %}
+                                <option value="{{ item.idValue }}">{{ item.value }}</option>
+                            {% endfor %}
+                        </select>
 
                         <label>{{ getAttributesList[getAttributeMap['higro']]['name'] }}</label>
-                        <input type="checkbox" name="higro[]" class="element checkbox medium" id="higro" value="{{ getAttributesList[getAttributeMap['higro']]['values'][0]['idValue'] }}">
 
+                        <select class="element select medium" name="higro[]" id="higro">
+                            {% for item in getAttributesList[getAttributeMap['higro']]['values'] %}
+                                <option value="{{ item.idValue }}">{{ item.value }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                 </form>
                 <!-- end filters -->

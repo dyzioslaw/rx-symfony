@@ -12,6 +12,10 @@ warsztaty_filter_attributes_manager_index:
   path: /manager/attributes/list
   defaults: { _controller: WarsztatyFilterBundle:AttributesManager:index }
 
+warsztaty_filter_attributes_manager_add:
+  path: /manager/attributes/add
+  defaults: { _controller: WarsztatyFilterBundle:AttributesManager:add }
+
 warsztaty_filter_attributes_manager_edit:
   path: /manager/attributes/edit/{id}
   defaults: { _controller: WarsztatyFilterBundle:AttributesManager:edit }
