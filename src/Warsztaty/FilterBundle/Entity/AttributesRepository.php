@@ -37,7 +37,7 @@ class AttributesRepository extends EntityRepository
             {
                 $getValues = $this->getEntityManager()
                     ->createQueryBuilder()
-                    ->select('IDENTITY(r.idValue)', 'v.value')
+                    ->select('IDENTITY(r.idValue) AS idValue', 'v.value')
                     ->from('WarsztatyFilterBundle:AttributeRelation', 'r')
                     ->leftJoin('WarsztatyFilterBundle:AttributeValues', 'v', 'WITH', 'r.idValue=v.idValue')
                     ->where('r.idAttribute = :id_attribute')

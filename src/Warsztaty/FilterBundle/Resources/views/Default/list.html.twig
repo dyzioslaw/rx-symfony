@@ -1,1 +1,16 @@
-<h1>do przygotowania widok - zmienna: list</h1>
+
+
+
+{% for item in list %}
+    <div class="product">
+        <h2>{{ item.name }}</h2>
+        <img src="/rx-symfony/web/bundles/warsztaty/{{ item.coverImagePath }}">
+        <p class="description">
+            {{ item.description }}
+        </p>
+        <a href="/product/{{ item.idProduct }}" class="more-link btn btn-primary">POZNAJ GO!</a>
+
+    </div>
+
+{% endfor %}
+{{ dump(list) }}
