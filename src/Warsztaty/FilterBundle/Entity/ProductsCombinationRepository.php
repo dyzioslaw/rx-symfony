@@ -14,21 +14,11 @@ class ProductsCombinationRepository extends EntityRepository
 {
     public function getProductsByCombinationsParams(array $params)
     {
-        // extend (tmp solution :-P)
-        $params = array(
-            'surface' => array(25),
-            'technology' => array(18),
-            'jons' => array(2),
-            'warmfog' => array(1),
-            'higro' => array(1)
-        );
-
         // Helpers
         $relationMap = array();
         $attributeMap = $this->getEntityManager()
             ->getRepository('WarsztatyFilterBundle:Attributes')
             ->getAttributeMap();
-
 
         // Quick validation
         foreach (array('surface', 'technology', 'jons', 'warmfog', 'higro') as $key)
@@ -71,12 +61,34 @@ class ProductsCombinationRepository extends EntityRepository
      */
     public function findByRelationIds(array $relation_ids)
     {
+        $id_products = array();
+        $getRelation = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('IDENTITY(p.idProduct) as idProduct')
+            ->from('WarsztatyFilterBundle:ProductsCombination', 'p')
+            ->add('where', $this->getEntityManager()->getExpressionBuilder()->in('p.idRelation', $relation_ids))
+            ->getQuery()
+            ->getArrayResult();
+
+        /**
+         * In the future create function to handle this
+         * in elegant way.
+         */
+        if (!$getRelation) {
+            $id_products = array('-1');
+        }
+        else
+        {
+            foreach ($getRelation as $relation) {
+                $id_products[]  = $relation['idProduct'];
+            }
+        }
+
         return $this->getEntityManager()
             ->createQueryBuilder()
             ->select('p')
-            ->from('WarsztatyFilterBundle:ProductsCombination', 'pc')
-            ->join('WarsztatyFilterBundle:Products', 'p', 'WITH', 'p.idProduct=pc.idProduct')
-            ->add('where', $this->getEntityManager()->getExpressionBuilder()->in('pc.idRelation', $relation_ids))
+            ->from('WarsztatyFilterBundle:Products', 'p')
+            ->add('where', $this->getEntityManager()->getExpressionBuilder()->in('p.id_product', $id_products))
             ->where('p.isAvailable = 1')
             ->getQuery()
             ->getArrayResult();
