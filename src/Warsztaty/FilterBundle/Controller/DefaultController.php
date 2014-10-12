@@ -25,6 +25,22 @@ class DefaultController extends Controller
         ));
     }
 
+    public function detailsAction()
+    {
+        $getAttributesList = $this->getDoctrine()
+            ->getRepository('WarsztatyFilterBundle:Attributes')
+            ->getStartAttributesData();
+
+        $getAttributeMap = $this->getDoctrine()
+            ->getRepository('WarsztatyFilterBundle:Attributes')
+            ->getAttributeMap();
+
+        return $this->render('WarsztatyFilterBundle:Default:index.html.twig', array(
+            'getAttributesList' => $getAttributesList,
+            'getAttributeMap' => $getAttributeMap
+        ));
+    }
+
     public function listAction(Request $request)
     {
         if (false === $request->isXmlHttpRequest() OR $request->getMethod() !== 'POST')
