@@ -23,11 +23,11 @@ class ProductsCombinationRepository extends EntityRepository
         // Quick validation
         foreach (array('surface', 'technology', 'jons', 'warmfog', 'higro') as $key)
         {
-            if (!array_key_exists($key, $params) OR !array_key_exists($key, $attributeMap)) {
+            if (!array_key_exists($key, $attributeMap)) {
                 return false;
             }
 
-            if ($params[$key])
+            if (array_key_exists($key, $params) AND $params[$key])
             {
                 foreach ($params[$key] as $id_value)
                 {
@@ -38,12 +38,11 @@ class ProductsCombinationRepository extends EntityRepository
                             'idValue' => $id_value
                     ));
 
-                    if (!$relation) {
-                        return false;
+                    if ($relation)
+                    {
+                        $relationMap['by_key'][$key][] = $relation->getIdRelation();
+                        $relationMap['id_list'][] = $relation->getIdRelation();
                     }
-
-                    $relationMap['by_key'][$key][] = $relation->getIdRelation();
-                    $relationMap['id_list'][] = $relation->getIdRelation();
                 }
             }
         }

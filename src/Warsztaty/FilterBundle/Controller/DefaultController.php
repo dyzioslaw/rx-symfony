@@ -36,7 +36,7 @@ class DefaultController extends Controller
 
         $list = $this->getDoctrine()
             ->getRepository('WarsztatyFilterBundle:ProductsCombination')
-            ->getProductsByCombinationsParams($request->query->all());
+            ->getProductsByCombinationsParams($_POST); // To do: change to Symfony standard, nothing work.. :-/
         $view = $this->render('WarsztatyFilterBundle:Default:list.html.twig', array(
             'list' => $list
         ));

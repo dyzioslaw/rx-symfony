@@ -3,6 +3,7 @@
 namespace Warsztaty\FilterBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class AttributesManagerController extends Controller
 {
@@ -19,10 +20,14 @@ class AttributesManagerController extends Controller
 
     public function editAction($id)
     {
-//        $getData = $this->getDoctrine()
-//            ->getRepository('WarsztatyFilterBundle:Attributes')
+        $getData = $this->getDoctrine()
+            ->getRepository('WarsztatyFilterBundle:Attributes')
+            ->findByIdAttribute($id);
 
-        $getData = array();
+        if (!$getData) {
+            throw $this->createNotFoundException('Attribute not exists.');
+        }
+
         return $this->render('WarsztatyFilterBundle:AttributesManager:edit.html.twig', array(
             'data' => $getData
         ));
