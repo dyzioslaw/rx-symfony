@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class AttributesRepository extends EntityRepository
 {
     /**
-     * Return attributes data with values from front page.
+     * Return attributes data with values for front page.
      * In feature add cache mechanism for production [!!!]
      *
      * @return array
