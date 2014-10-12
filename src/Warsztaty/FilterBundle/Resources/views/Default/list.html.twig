@@ -1,4 +1,4 @@
-
+{% if list|length > 0 %}
 
 
 {% for item in list %}
@@ -6,12 +6,17 @@
         <h2>{{ item.name }}</h2>
         <img src="/rx-symfony/web/bundles/warsztaty/{{ item.coverImagePath }}">
         <p class="description">
-            {{ item.description }}
+            {{ item.description|length > 200 ? item.description|slice(0, 200) ~ '...' : item.description  }}
+
         </p>
-        <a href="/product/{{ item.idProduct }}" class="more-link btn btn-primary">POZNAJ GO!</a>
+        <a href="product/{{ item.idProduct }}" class="more-link btn btn-primary" target="_self">POZNAJ GO!</a>
 
     </div>
 
 {% endfor %}
+
+{% else %}
+    <p class="error">Nasze produkty są dopasowane pod konkretne wymagania. Twoje oczekiwania są zbyt wysokie. Kup wiaderko z wodą.</p>
+
 {% endif %}
-{{ dump(list) }}
+

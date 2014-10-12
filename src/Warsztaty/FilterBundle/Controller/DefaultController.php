@@ -25,19 +25,17 @@ class DefaultController extends Controller
         ));
     }
 
-    public function detailsAction()
+    public function detailsAction($productid)
     {
-        $getAttributesList = $this->getDoctrine()
-            ->getRepository('WarsztatyFilterBundle:Attributes')
-            ->getStartAttributesData();
+        $product = $this->getDoctrine()
+            ->getRepository('WarsztatyFilterBundle:Products')
+            ->findByIdProduct($productid);
+        if (!$product) {
+            throw $this->createNotFoundException('Attribute not exists.');
+        }
 
-        $getAttributeMap = $this->getDoctrine()
-            ->getRepository('WarsztatyFilterBundle:Attributes')
-            ->getAttributeMap();
-
-        return $this->render('WarsztatyFilterBundle:Default:index.html.twig', array(
-            'getAttributesList' => $getAttributesList,
-            'getAttributeMap' => $getAttributeMap
+        return $this->render('WarsztatyFilterBundle:Default:product.html.twig', array(
+            'product' => $product['0']
         ));
     }
 

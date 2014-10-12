@@ -7,6 +7,11 @@ warsztaty_filter_product_list:
   path: /product_list
   defaults: { _controller: WarsztatyFilterBundle:Default:list }
 
+warsztaty_filter_details:
+  path: /product/{productid}
+  defaults: { _controller: WarsztatyFilterBundle:Default:details }
+
+
 # AttributesManager
 warsztaty_filter_attributes_manager_index:
   path: /manager/attributes/list
