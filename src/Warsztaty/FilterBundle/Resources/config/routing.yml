@@ -1,7 +1,19 @@
+# Default Controller
 warsztaty_filter_homepage:
-    path:     /
+    path: /
     defaults: { _controller: WarsztatyFilterBundle:Default:index }
 
 warsztaty_filter_product_list:
   path: /product_list
   defaults: { _controller: WarsztatyFilterBundle:Default:list }
+
+# AttributesManager
+warsztaty_filter_attributes_manager_index:
+  path: /manager/attributes/list
+  defaults: { _controller: WarsztatyFilterBundle:AttributesManager:index }
+
+warsztaty_filter_attributes_manager_edit:
+  path: /manager/attributes/edit/{id}
+  defaults: { _controller: WarsztatyFilterBundle:AttributesManager:edit }
+  requirements:
+    id: \d+
