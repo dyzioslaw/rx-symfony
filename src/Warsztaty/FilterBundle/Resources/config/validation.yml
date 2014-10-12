@@ -1,0 +1,4 @@
+Warsztaty\FilterBundle\Entity\Attributes
+    properties:
+        name:
+            - NotBlank: ~
