@@ -1,0 +1,64 @@
+{% extends 'WarsztatyFilterBundle::layout.html.twig' %}
+
+{% block title %}Nawilż swoje życie!{% endblock %}
+
+{% block content_header '' %}
+
+    {% block content %}
+
+        <div class="container theme-showcase" role="main">
+
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron">
+                <a href="{{ path('warsztaty_filter_homepage') }}" target="_self" class="btn btn-primary">Wróć do listy produktów</a>
+
+            </div>
+            <div class="container">
+                <div class="row product-details" id="product-container">
+                    <div class="col-md-7">
+
+                        {% if product.movieUri|length > 0 %}
+                            <div class="movie">
+
+                                <iframe width="640" height="360" src="//{{ product.movieUri }}?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        {% endif %}
+
+                        <h1>
+                            {{ product.name }}
+                        </h1>
+
+                        <p class="description">
+                            {{ product.description|raw }}
+                        </p>
+
+                        {% if product.isAvailable == true %}
+                            <div class="available aviability btn btn-success">PRODUKT JEST DOSTĘPNY</div>
+                        {% else %}
+                            <div class="unavailable aviability btn btn-danger">PRODUKT OBECNIE NIEDOSTĘPNY</div>
+                        {% endif %}
+                        {% if product.exploitationCost|length > 0 %}
+                            <div class="exploitation">
+                                <h4>Koszty eksploatacji:</h4>
+                                {{ product.exploitationCost }}
+                            </div>
+                        {% endif %}
+
+                        {% if product.galleryUri|length > 0 %}
+                            <div class="gallery">
+                                <h4>Galeria produktu:</h4>
+                                <a href="{{ product.galleryUri }}" class="btn btn-primary">Przejdź do galerii produktu</a>
+                            </div>
+                        {% endif %}
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/rx-symfony/web/bundles/warsztaty/{{ product.coverImagePath }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    {% endblock %}

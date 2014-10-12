@@ -1,9 +1,50 @@
+body {
+  min-height: 100%;
+  display: block;
+}
 .jumbotron {
   text-align: center;
+  padding-top: 15px;
+  padding-bottom: 20px;
 }
 label {
   display: block;
   margin-top: 20px;
+}
+.results {
+  width: 980px;
+  margin: 0 auto;
+}
+.results .product {
+  width: 300px;
+  display: block;
+  float: left;
+  padding: 10px;
+  border: 1px solid #d0d0d0;
+  height: 400px;
+  margin: 10px;
+}
+.results .product h2 {
+  font-size: 18px;
+}
+.results .product img {
+  display: table;
+  margin: 0 auto;
+  height: 200px;
+  width: auto;
+}
+.results .product .description {
+  text-align: justify;
+  font-size: 12px;
+  display: block;
+  height: 85px;
+}
+.results .product .more-link {
+  margin: 0 auto;
+  display: table;
+}
+.results .error {
+  padding: 20px;
 }
 .switch-button-label {
   float: left;
@@ -36,4 +77,7 @@ label {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+}
+.product-details .aviability {
+  cursor: auto !important;
 }

@@ -25,6 +25,20 @@ class DefaultController extends Controller
         ));
     }
 
+    public function detailsAction($productid)
+    {
+        $product = $this->getDoctrine()
+            ->getRepository('WarsztatyFilterBundle:Products')
+            ->findByIdProduct($productid);
+        if (!$product) {
+            throw $this->createNotFoundException('Attribute not exists.');
+        }
+
+        return $this->render('WarsztatyFilterBundle:Default:product.html.twig', array(
+            'product' => $product['0']
+        ));
+    }
+
     public function listAction(Request $request)
     {
         if (false === $request->isXmlHttpRequest() OR $request->getMethod() !== 'POST')
